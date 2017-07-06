@@ -27,5 +27,23 @@ articleRouter.post('/api/articles', bearerAuth, s3Upload('image'), (req, res, ne
   .catch(next)
 })
 
+articleRouter.delete('/api/articles/:id', bearerAuth, (req, res, next) => {
+  Article.findOneAndRemove({userID: req.user._id, _id: req.params._id})
+  .then(() => res.sendStatus(204))
+  .catch(next)
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
